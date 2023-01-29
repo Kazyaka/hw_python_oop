@@ -26,7 +26,6 @@ class Training:
     M_IN_KM = 1000
     M_IN_H = 60
     TRAINING_TYPE = ''
-    
 
     def __init__(self,
                  action: int,
@@ -93,8 +92,10 @@ class SportsWalking(Training):
 
     def get_spent_calories(self) -> float:
         calories = ((self.CALORIES_MEAN_SPEED_MULTIPLIER * self.weight
-                     + ((self.get_mean_speed() * self.KMH_IN_MSEC) ** 2 / self.height*self.SM_IN_M)
-                    * self.CALORIES_MEAN_SPEED_SHIFT * self.weight)) * (self.duration * self.M_IN_H)
+                     + ((self.get_mean_speed() * self.KMH_IN_MSEC) ** 2
+                         / self.height * self.SM_IN_M)
+                     * self.CALORIES_MEAN_SPEED_SHIFT
+                     * self.weight)) * (self.duration * self.M_IN_H)
         return calories
 
 
