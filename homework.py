@@ -1,5 +1,6 @@
 from typing import List
 
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
