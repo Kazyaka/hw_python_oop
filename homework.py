@@ -1,3 +1,5 @@
+from typing import List
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
@@ -138,7 +140,7 @@ class Swimming(Training):
         return calories
 
 
-def read_package(workout_type: str, data: list[int]) -> Training:
+def read_package(workout_type: str, data: List[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming,
                  'RUN': Running,
@@ -153,7 +155,7 @@ def main(training: Training) -> None:
 
 
 if __name__ == '__main__':
-    packages: list[tuple[str, int]] = [
+    packages: List[tuple[str, int]] = [
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
