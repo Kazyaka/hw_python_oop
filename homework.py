@@ -1,4 +1,4 @@
-from typing import List
+from typing import Iterable
 
 
 class InfoMessage:
@@ -128,24 +128,24 @@ class Swimming(Training):
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        distance = self.length_pool * self.count_pool
+        distance: float = self.length_pool * self.count_pool
         speed = distance / self.M_IN_KM / self.duration
         return speed
 
     def get_spent_calories(self) -> float:
         """Получить значение потраченных калорий."""
-        summ_coef = self.get_mean_speed() + self.COEF_SW_SPEED
+        summ_coef: float = self.get_mean_speed() + self.COEF_SW_SPEED
         calories = (
             summ_coef * self.COEF_SW_WEIGHT * self.weight * self.duration
         )
         return calories
 
 
-def read_package(workout_type: str, data: List[int]) -> Training:
+def read_package(workout_type: str, data: Iterable[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    type_dict = {'SWM': Swimming,
-                 'RUN': Running,
-                 'WLK': SportsWalking}
+    type_dict: dict[Training] = {'SWM': Swimming,
+                                 'RUN': Running,
+                                 'WLK': SportsWalking}
     return type_dict[workout_type](*data)
 
 
@@ -156,7 +156,7 @@ def main(training: Training) -> None:
 
 
 if __name__ == '__main__':
-    packages: List[tuple[str, int]] = [
+    packages: Iterable[tuple[str, Iterable[int]]] = [
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
